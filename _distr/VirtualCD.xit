@@ -1,0 +1,24 @@
+;Predefined directory prefixes are $PROGRAMFILES$, $WINDIR$,
+;$SYSDIR$, $WINDRIVE$, $CURDIR$, $TEMPDIR$
+
+$general
+Readme  	readme.txt
+
+Defaultdir	$PROGRAMFILES$\WinCDEmu
+Options 	SelectDir
+Components	main,drivers
+RootComps	main,drivers
+Version		4.0
+UID			{420D7C52-B473-481b-9E20-2DB4BF9A7E80}
+Name		"WinCDEmu"
+CustomUninstallCmd	$DESTDIR$\uninstall$64_OR_VOID$.exe	
+
+$main
+file		main.xic
+options		default
+;requires	 none
+
+$drivers
+file		drivers.xic
+options		default
+;requires	 none

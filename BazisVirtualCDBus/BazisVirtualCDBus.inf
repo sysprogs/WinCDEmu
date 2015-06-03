@@ -1,0 +1,58 @@
+[Version]
+Signature="$WINDOWS NT$"
+Class=SCSIAdapter
+ClassGuid={4d36e97b-e325-11ce-bfc1-08002be10318}
+Provider=%BAZIS%
+DriverVer=06/18/2011, 3.60.0001
+CatalogFile=BazisVirtualCDBus.cat
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+[SourceDisksNames.x86]
+1 = %DiskId1%,,,
+
+[SourceDisksNames.amd64]
+1 = %DiskId1%,,,
+
+[SourceDisksFiles.x86]
+BazisVirtualCDBus.sys  = 1,\x86
+
+[SourceDisksFiles.amd64]
+BazisVirtualCDBus.sys  = 1,\x64
+
+[Manufacturer]
+%BAZIS%=Standard, NTamd64
+
+[Standard]
+%BazisVirtualCDBus.DeviceDesc%=BazisVirtualCDBus_Device, root\BazisVirtualCDBus
+
+[Standard.NTamd64]
+%BazisVirtualCDBus.DeviceDesc%=BazisVirtualCDBus_Device, root\BazisVirtualCDBus
+
+[BazisVirtualCDBus_Device.NT]
+CopyFiles=Drivers_Dir
+
+[Drivers_Dir]
+BazisVirtualCDBus.sys,,,2
+
+;-------------- Service installation
+[BazisVirtualCDBus_Device.NT.Services]
+AddService = BazisVirtualCDBus,%SPSVCINST_ASSOCSERVICE%, dev_Service_Inst
+
+; -------------- busenum driver install sections
+[dev_Service_Inst]
+DisplayName    = %dev.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START 
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\BazisVirtualCDBus.sys
+LoadOrderGroup = Extended Base
+
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+BAZIS = "SysProgs.org"
+DiskId1 = "WinCDEmu installation directory"
+BazisVirtualCDBus.DeviceDesc = "WinCDEmu Virtual Bus"
+dev.SVCDESC = "WinCDEmu Virtual Bus Driver"

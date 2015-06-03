@@ -1,0 +1,11 @@
+HKCR
+{
+	NoRemove AppID
+	{
+		'%APPID%' = s 'WinCDEmuContextMenu'
+		'WinCDEmuContextMenu.DLL'
+		{
+			val AppID = s '%APPID%'
+		}
+	}
+}

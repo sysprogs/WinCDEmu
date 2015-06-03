@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{5e7cd123-08f3-4a6e-8de3-47b2342c4fcf}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source files\UDF">
+      <UniqueIdentifier>{59546e46-ce68-4f6c-9c73-7d92b94d64e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{e308ca80-bdfd-48e7-b337-7633b57d4087}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header files\NRG">
+      <UniqueIdentifier>{168e3139-4efd-4db1-8ba2-5d764b9bfd7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\MDS">
+      <UniqueIdentifier>{ccb1d788-acb0-4c87-aad9-149f5e1b8815}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\UDF">
+      <UniqueIdentifier>{b3eae87d-83e1-4d14-be14-13482df3df71}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CCDParser.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="CUEParser.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageFormats.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="IMGParser.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="MDS\MDSParser.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="NRG\NRGParser.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="RawCDFormats.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="UDFAnalyzer.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="Filesystems\miniudf.cpp">
+      <Filter>Source files\UDF</Filter>
+    </ClCompile>
+    <ClCompile Include="Filesystems\UDFHelpers.cpp">
+      <Filter>Source files\UDF</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CCDParser.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ImageDump\cdstruct.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="CUEParser.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFormats.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageHelpers.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="IMGParser.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiTrackImage.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="RawCDFormats.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="UDFAnalyzer.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="NRG\NRGParser.h">
+      <Filter>Header files\NRG</Filter>
+    </ClInclude>
+    <ClInclude Include="NRG\NRGRecordSet.h">
+      <Filter>Header files\NRG</Filter>
+    </ClInclude>
+    <ClInclude Include="NRG\NRGStructures.h">
+      <Filter>Header files\NRG</Filter>
+    </ClInclude>
+    <ClInclude Include="MDS\MDSFormats.h">
+      <Filter>Header files\MDS</Filter>
+    </ClInclude>
+    <ClInclude Include="MDS\MDSParser.h">
+      <Filter>Header files\MDS</Filter>
+    </ClInclude>
+    <ClInclude Include="MDS\MDSRecordSet.h">
+      <Filter>Header files\MDS</Filter>
+    </ClInclude>
+    <ClInclude Include="Filesystems\miniudf.h">
+      <Filter>Header files\UDF</Filter>
+    </ClInclude>
+    <ClInclude Include="Filesystems\UDFHelpers.h">
+      <Filter>Header files\UDF</Filter>
+    </ClInclude>
+    <ClInclude Include="Filesystems\UDFStructures.h">
+      <Filter>Header files\UDF</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

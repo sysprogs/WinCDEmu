@@ -1,0 +1,48 @@
+HKCR
+{
+	WinCDEmuContextMenu.DriveContextMenu.1 = s 'DriveContextMenu Class'
+	{
+		CLSID = s '{A9901FCD-B4DF-43A1-BD5D-6C9F88679497}'
+	}
+	WinCDEmuContextMenu.DriveContextMenu = s 'DriveContextMenu Class'
+	{
+		CLSID = s '{A9901FCD-B4DF-43A1-BD5D-6C9F88679497}'
+		CurVer = s 'WinCDEmuContextMenu.DriveContextMenu.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {A9901FCD-B4DF-43A1-BD5D-6C9F88679497} = s 'DriveContextMenu Class'
+		{
+			ProgID = s 'WinCDEmuContextMenu.DriveContextMenu.1'
+			VersionIndependentProgID = s 'WinCDEmuContextMenu.DriveContextMenu'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{B77FD653-B196-4B0A-B197-7F8F704E0092}'
+		}
+	}
+	
+	NoRemove Drive
+	{
+		NoRemove shellex
+		{
+			NoRemove ContextMenuHandlers
+			{
+				WinCDEmu = s '{A9901FCD-B4DF-43A1-BD5D-6C9F88679497}'
+			}
+		}
+	}
+	
+	NoRemove Folder
+	{
+		NoRemove shellex
+		{
+			NoRemove ContextMenuHandlers
+			{
+				WinCDEmu = s '{A9901FCD-B4DF-43A1-BD5D-6C9F88679497}'
+			}
+		}
+	}
+}

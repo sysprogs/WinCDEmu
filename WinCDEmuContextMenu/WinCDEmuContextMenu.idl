@@ -1,0 +1,57 @@
+// WinCDEmuContextMenu.idl : IDL source for WinCDEmuContextMenu
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (WinCDEmuContextMenu.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "shobjidl.idl";
+
+[
+	object,
+	uuid(918988CF-2AFC-404C-90F2-5443D7A319E7),
+	helpstring("IVCDImgContextMenu Interface"),
+	pointer_default(unique)
+]
+interface IVCDImgContextMenu : IUnknown{
+};
+[
+	object,
+	uuid(E0333ECC-5824-4AD9-8365-CCDD20184674),
+	dual,
+	nonextensible,
+	helpstring("IDriveContextMenu Interface"),
+	pointer_default(unique)
+]
+interface IDriveContextMenu : IUnknown{
+};
+[
+	uuid(B77FD653-B196-4B0A-B197-7F8F704E0092),
+	version(1.0),
+	helpstring("WinCDEmuContextMenu 1.0 Type Library")
+]
+library WinCDEmuContextMenuLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(D0E37FD2-F675-426F-B09A-2CF37BA46FD5),
+		helpstring("VCDImgContextMenu Class")
+	]
+	coclass VCDImgContextMenu
+	{
+		[default] interface IVCDImgContextMenu;
+		interface IContextMenu;
+		interface IShellExtInit;
+	};
+	[
+		uuid(A9901FCD-B4DF-43A1-BD5D-6C9F88679497),
+		helpstring("DriveContextMenu Class")
+	]
+	coclass DriveContextMenu
+	{
+		[default] interface IDriveContextMenu;
+		interface IContextMenu;
+		interface IShellExtInit;
+	};
+};

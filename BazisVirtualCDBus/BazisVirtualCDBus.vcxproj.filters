@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{c99487da-0622-4d89-bbe9-892755876729}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{8500b709-3730-4210-9550-0969d72db36c}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BazisVirtualCDBus.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="PersistentImageDatabase.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="VirtualCDDevice.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BazisVirtualCDBus.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="DeviceControl.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="PersistentImageDatabase.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="VirtualCDDevice.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="BazisVirtualCDBus.rc" />
+  </ItemGroup>
+</Project>

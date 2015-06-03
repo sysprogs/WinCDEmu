@@ -1,0 +1,15 @@
+HKCR
+{
+	NoRemove AppID
+	{
+		'%APPID%' = s 'VirtualAutorunDisabler'
+		{
+			val ROTFlags = d 1
+		}
+		
+		'VirtualAutorunDisabler.EXE'
+		{
+			val AppID = s '%APPID%'
+		}
+	}
+}

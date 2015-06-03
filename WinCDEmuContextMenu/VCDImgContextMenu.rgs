@@ -1,0 +1,37 @@
+HKCR
+{
+	WinCDEmuContextMenu.VCDImgContextMenu.1 = s 'VCDImgContextMenu Class'
+	{
+		CLSID = s '{D0E37FD2-F675-426F-B09A-2CF37BA46FD5}'
+	}
+	WinCDEmuContextMenu.VCDImgContextMenu = s 'VCDImgContextMenu Class'
+	{
+		CLSID = s '{D0E37FD2-F675-426F-B09A-2CF37BA46FD5}'
+		CurVer = s 'WinCDEmuContextMenu.VCDImgContextMenu.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {D0E37FD2-F675-426F-B09A-2CF37BA46FD5} = s 'VCDImgContextMenu Class'
+		{
+			ProgID = s 'WinCDEmuContextMenu.VCDImgContextMenu.1'
+			VersionIndependentProgID = s 'WinCDEmuContextMenu.VCDImgContextMenu'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{B77FD653-B196-4B0A-B197-7F8F704E0092}'
+		}
+	}
+	
+	NoRemove *
+	{
+		NoRemove shellex
+		{
+			NoRemove ContextMenuHandlers
+			{
+				WinCDEmu = s '{D0E37FD2-F675-426F-B09A-2CF37BA46FD5}'
+			}
+		}
+	}
+	
+}

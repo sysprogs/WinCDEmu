@@ -1,0 +1,51 @@
+HKCR
+{
+	VirtualAutorunDisabler.VirtualAutorun.1 = s 'VirtualAutorunDisablingMonitor Class'
+	{
+		CLSID = s '{04DDC073-352E-447D-8A83-3E1FD9D41E61}'
+	}
+	VirtualAutorunDisabler.VirtualAutorunDi = s 'VirtualAutorunDisablingMonitor Class'
+	{
+		CLSID = s '{04DDC073-352E-447D-8A83-3E1FD9D41E61}'
+		CurVer = s 'VirtualAutorunDisabler.VirtualAutorun.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {04DDC073-352E-447D-8A83-3E1FD9D41E61} = s 'VirtualAutorunDisablingMonitor Class'
+		{
+			ProgID = s 'VirtualAutorunDisabler.VirtualAutorun.1'
+			VersionIndependentProgID = s 'VirtualAutorunDisabler.VirtualAutorunDi'
+			LocalServer32 = s '%MODULE%'
+			'TypeLib' = s '{D2243491-B0DF-40CC-9973-9E401631D770}'
+		}
+	}
+}
+
+HKLM
+{
+	NoRemove SOFTWARE
+	{
+		NoRemove Microsoft
+		{
+			NoRemove Windows
+			{
+				NoRemove CurrentVersion
+				{
+					NoRemove Explorer
+					{
+						NoRemove AutoplayHandlers
+						{
+							NoRemove CancelAutoplay
+							{
+								NoRemove CLSID
+								{
+									val '04DDC073-352E-447D-8A83-3E1FD9D41E61' = s ''
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

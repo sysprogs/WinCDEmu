@@ -1,0 +1,52 @@
+$general
+caption		"Mounter application"
+desc		readme.txt
+archive		main.bzz
+compression	lzma23
+
+source		app
+
+;If not defined, every file path in archive must begin with valid standard directory prefix
+forcedir	$DESTDIR$\
+
+version		3.50
+options 	 over,forceover
+
+
+$registry
+createkeyb	HKCR\Applications\vmnt$64_OR_VOID$.exe\shell\open\command	3264
+setstrdef	"\"$DESTDIR$\vmnt$64_OR_VOID$.exe\" \"%1\""
+
+assoc_ext		iso/BazisVirtualCD.Iso "ISO CD/DVD image" %SystemRoot%\System32\shell32.dll,11 "\"$DESTDIR$\vmnt$64_OR_VOID$.exe\" \"%1\""
+assoc_app		iso vmnt$64_OR_VOID$.exe
+
+assoc_ext		cue/BazisVirtualCD.Cue "CUE Sheet for CD/DVD image" %SystemRoot%\System32\shell32.dll,11 "\"$DESTDIR$\vmnt$64_OR_VOID$.exe\" \"%1\""
+assoc_app		cue vmnt$64_OR_VOID$.exe
+
+assoc_ext		img/BazisVirtualCD.Img "Raw CD/DVD image" %SystemRoot%\System32\shell32.dll,11 "\"$DESTDIR$\vmnt$64_OR_VOID$.exe\" \"%1\""
+assoc_app		img vmnt$64_OR_VOID$.exe
+
+assoc_ext		nrg/BazisVirtualCD.Nrg "Nero CD/DVD image" %SystemRoot%\System32\shell32.dll,11 "\"$DESTDIR$\vmnt$64_OR_VOID$.exe\" \"%1\""
+assoc_app		nrg vmnt$64_OR_VOID$.exe
+
+assoc_ext		mds/BazisVirtualCD.Mds "Alcohol CD/DVD image" %SystemRoot%\System32\shell32.dll,11 "\"$DESTDIR$\vmnt$64_OR_VOID$.exe\" \"%1\""
+assoc_app		mds vmnt$64_OR_VOID$.exe
+
+assoc_ext		ccd/BazisVirtualCD.Ccd "CloneCD CD/DVD image" %SystemRoot%\System32\shell32.dll,11 "\"$DESTDIR$\vmnt$64_OR_VOID$.exe\" \"%1\""
+assoc_app		ccd vmnt$64_OR_VOID$.exe
+
+
+$startmenu
+deletegroup	WinCDEmu
+creategroup	WinCDEmu
+createitem	"WinCDEmu Settings"	"\"$DESTDIR$\vmnt$64_OR_VOID$.exe\" /settings"
+
+$postinstall
+exec	"$DESTDIR$\uninstall$64_OR_VOID$.exe /UPDATE"
+
+;$uninstall
+;removekey	HKCR\BazisVirtualCD.Iso
+;removekey	HKCR\BazisVirtualCD.Cue
+;removekey	HKCR\BazisVirtualCD.Img
+;removekey	HKCR\Applications\vmnt$64_OR_VOID$.exe
+;removedir	$DESTDIR$

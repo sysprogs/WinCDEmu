@@ -1,0 +1,24 @@
+$general
+caption		"Drivers"
+desc		readme.txt
+archive		drivers.bzz
+compression	lzma23
+
+source		drivers
+
+;If not defined, every file path in archive must begin with valid standard directory prefix
+forcedir	$DESTDIR$\
+
+version		3.00
+options 	 over
+
+
+$registry
+
+$startmenu
+
+$postinstall
+instroot	root\BazisVirtualCDBus	$DESTDIR$\BazisVirtualCDBus.inf
+
+;$uninstall
+;uninstroot	root\BazisVirtualCDBus

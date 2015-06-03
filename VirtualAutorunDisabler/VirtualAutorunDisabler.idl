@@ -1,0 +1,50 @@
+// VirtualAutorunDisabler.idl : IDL source for VirtualAutorunDisabler
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (VirtualAutorunDisabler.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "shobjidl.idl";
+
+[
+	object,
+	uuid(57C052A7-AAD7-4230-860D-F6768C8EA59F),
+	helpstring("IVirtualAutorunDisablingMonitor Interface"),
+	pointer_default(unique)
+]
+interface IVirtualAutorunDisablingMonitor : IUnknown{
+	HRESULT InitializeMonitorAndResetWatchdog();
+	HRESULT TerminateServer();
+};
+
+[
+	object,
+	uuid(466a44dc-ad3b-4573-bdc4-0686bbfb7a23),
+	helpstring("For internal use only. Do not use."),
+	pointer_default(unique)
+]
+interface IVirtualAutorunDisablingMonitorInternal : IUnknown{
+	HRESULT CheckForTimeout([in] int PID);
+};
+
+[
+	uuid(D2243491-B0DF-40CC-9973-9E401631D770),
+	version(1.0),
+	helpstring("VirtualAutorunDisabler 1.0 Type Library")
+]
+library VirtualAutorunDisablerLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(04DDC073-352E-447D-8A83-3E1FD9D41E61),
+		helpstring("VirtualAutorunDisablingMonitor Class")
+	]
+	coclass VirtualAutorunDisablingMonitor
+	{
+		[default] interface IVirtualAutorunDisablingMonitor;
+		interface IQueryCancelAutoPlay;
+		interface IVirtualAutorunDisablingMonitorInternal;
+	};
+};

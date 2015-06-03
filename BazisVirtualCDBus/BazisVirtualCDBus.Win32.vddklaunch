@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<DDKLaunchParams xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <DebugConnectionString>vm://Win7x64</DebugConnectionString>
+  <RemoteMachineHostname />
+  <PathOnTarget>%SystemRoot%\System32\Drivers\BazisVirtualCDBus.sys</PathOnTarget>
+  <StartMode>PnpEnableDisable</StartMode>
+  <StartModeArg>root\BazisVirtualCDBus</StartModeArg>
+  <StartModeIntArg>0</StartModeIntArg>
+  <StopMode>PnpEnableDisable</StopMode>
+  <StopModeArg>root\BazisVirtualCDBus</StopModeArg>
+  <StopModeIntArg>0</StopModeIntArg>
+  <KeepSessionWhenDriverUnloads>true</KeepSessionWhenDriverUnloads>
+  <AutoInstallPolicy>AutoInstallInteractive</AutoInstallPolicy>
+</DDKLaunchParams>
