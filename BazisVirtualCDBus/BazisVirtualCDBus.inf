@@ -3,7 +3,7 @@ Signature="$WINDOWS NT$"
 Class=SCSIAdapter
 ClassGuid={4d36e97b-e325-11ce-bfc1-08002be10318}
 Provider=%BAZIS%
-DriverVer=06/18/2011, 3.60.0001
+DriverVer=06/02/2015, 4.01.0001
 CatalogFile=BazisVirtualCDBus.cat
 
 [DestinationDirs]
