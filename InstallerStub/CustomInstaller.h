@@ -1,5 +1,5 @@
 #pragma once
-#include "../../../win32/installer/ssibase/ssibase.h"
+#include "../../../svn/win32/installer/ssibase/ssibase.h"
 #include <bzscore/thread.h>
 
 class CustomInstaller : public CInstallationPacketInstaller

@@ -18,6 +18,9 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <PropertyGroup Condition="'$(SIGN_RELEASE_BINARY)' == ''">
+	<SIGN_RELEASE_BINARY>cmd /c echo SIGN_RELEASE_BINARY not defined. Skipping signing of </SIGN_RELEASE_BINARY>
+  </PropertyGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{AE4C0767-F387-48DD-970E-1D143053516A}</ProjectGuid>
     <RootNamespace>BazisPortableCDBus</RootNamespace>
@@ -116,6 +119,7 @@
       </RandomizedBaseAddress>
       <DataExecutionPrevention>
       </DataExecutionPrevention>
+      <AdditionalOptions>/IGNORE:4210 %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <PostBuildEvent>
       <Command>$(SIGN_RELEASE_BINARY) $(TargetPath)</Command>
@@ -149,6 +153,7 @@
       </RandomizedBaseAddress>
       <DataExecutionPrevention>
       </DataExecutionPrevention>
+      <AdditionalOptions>/IGNORE:4210 %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <PostBuildEvent>
       <Command>$(SIGN_RELEASE_BINARY) $(TargetPath)</Command>
@@ -188,6 +193,7 @@
       </RandomizedBaseAddress>
       <DataExecutionPrevention>
       </DataExecutionPrevention>
+      <AdditionalOptions>/IGNORE:4210 %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <PostBuildEvent>
       <Command>call $(SIGN_RELEASE_BINARY) $(TargetPath)</Command>
@@ -227,6 +233,7 @@
       </RandomizedBaseAddress>
       <DataExecutionPrevention>
       </DataExecutionPrevention>
+      <AdditionalOptions>/IGNORE:4210 %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <PostBuildEvent>
       <Command>call $(SIGN_RELEASE_BINARY) $(TargetPath)</Command>
@@ -252,7 +259,7 @@
     <ResourceCompile Include="BazisPortableCDBus.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\sysprogs\bzslib\bzscore\bzscore.vcxproj">
+    <ProjectReference Include="..\..\BazisLib\bzscore\bzscore.vcxproj">
       <Project>{a009693f-aadd-42cf-8e6e-f7bbf5601e5c}</Project>
       <Private>true</Private>
       <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
@@ -260,7 +267,7 @@
       <LinkLibraryDependencies>true</LinkLibraryDependencies>
       <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\sysprogs\bzslib\bzshlp\bzshlp.vcxproj">
+    <ProjectReference Include="..\..\BazisLib\bzshlp\bzshlp.vcxproj">
       <Project>{443b5c7d-6675-4a16-a297-e8653eee39ad}</Project>
     </ProjectReference>
     <ProjectReference Include="..\ImageFormats\ImageFormats.vcxproj">

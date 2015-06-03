@@ -6,8 +6,8 @@
 
 #include "CustomInstaller.h"
 
-#include "../../../win32/installer/ssibase/intl.h"
-#include "../../../win32/installer/ssibase/resource.h"
+#include "../../../svn/win32/installer/ssibase/intl.h"
+#include "../../../svn/win32/installer/ssibase/resource.h"
 static ResourceStringPool g_StringPool(GetModuleHandle(NULL));
 
 #pragma comment(lib, "comctl32")

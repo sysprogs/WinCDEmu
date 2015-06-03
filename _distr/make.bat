@@ -23,19 +23,19 @@ del app\x86\*.exp
 del app\x64\*.exp
 del drivers\x86\*.pdb
 del drivers\x64\*.pdb
-copy /y C:\gnu\cdr-mingw\cdrtools-3.01\mkisofs\OBJ\i686-mingw32_nt-gcc\mkisofs.exe app\mkisofs.exe
+copy /y ..\redist\mkisofs.exe app\mkisofs.exe
 
 if not exist ..\AllModules\InstallerStub.exe goto error
-call ..\..\..\utils\upx ..\AllModules\InstallerStub.exe
+call ..\..\..\svn\utils\upx ..\AllModules\InstallerStub.exe
 
 cipher /d /a /s:.
 
-call ..\..\..\utils\mkcat.bat drivers
-call ..\..\..\utils\sign_r.bat drivers\BazisVirtualCDBus.cat
+call ..\..\..\svn\utils\mkcat.bat drivers
+call ..\..\..\svn\utils\sign_r.bat drivers\BazisVirtualCDBus.cat
 
-call ..\..\..\utils\ssibuilder VirtualCD.xit WinCDEmu-4.0.exe /linkcabs /nopause /exestub:..\AllModules\InstallerStub.exe
+call ..\..\..\svn\utils\ssibuilder VirtualCD.xit WinCDEmu-4.0.exe /linkcabs /nopause /exestub:..\AllModules\InstallerStub.exe
 cipher /d /a *.exe
-call ..\..\..\utils\sign_r.bat WinCDEmu-4.0.exe
+call ..\..\..\svn\utils\sign_r.bat WinCDEmu-4.0.exe
 goto end
 :error
 echo Build failed!

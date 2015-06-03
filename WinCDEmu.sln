@@ -7,9 +7,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "batchmnt", "batchmnt\batchm
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VirtualCDCtl", "VirtualCDCtl\VirtualCDCtl.vcxproj", "{91A0EFB0-AE6E-4D56-A76D-14174DBDADC0}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "bzscore", "..\..\..\sysprogs\bzslib\bzscore\bzscore.vcxproj", "{A009693F-AADD-42CF-8E6E-F7BBF5601E5C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "bzscore", "..\BazisLib\bzscore\bzscore.vcxproj", "{A009693F-AADD-42CF-8E6E-F7BBF5601E5C}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "bzshlp", "..\..\..\sysprogs\bzslib\bzshlp\bzshlp.vcxproj", "{443B5C7D-6675-4A16-A297-E8653EEE39AD}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "bzshlp", "..\BazisLib\bzshlp\bzshlp.vcxproj", "{443B5C7D-6675-4A16-A297-E8653EEE39AD}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "vmnt", "vmnt\vmnt.vcxproj", "{39678193-82CB-4CE1-A09F-105C67965D48}"
 EndProject

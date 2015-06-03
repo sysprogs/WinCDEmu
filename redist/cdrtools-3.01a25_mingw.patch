@@ -1,0 +1,115 @@
+--- libschily/resolvepath.c	Wed Oct 30 05:17:57 2013
++++ libschily/resolvepath.c	Sat Oct 11 06:41:00 2014
+@@ -173,7 +173,11 @@
+ 
+ 		strlcpy(b, p, len);
+ 		p += len - 1;
++#ifdef _WIN32
++		if (stat(buf, &sb) < 0) {
++#else
+ 		if (lstat(buf, &sb) < 0) {
++#endif
+ 			if (flags & RSPF_EXIST)
+ 				return (-1);
+ 			sb.st_mode = S_IFREG;
+--- mkisofs/diag/isoinfo.c	Sun May 04 20:51:35 2014
++++ mkisofs/diag/isoinfo.c	Sat Oct 11 06:44:08 2014
+@@ -72,6 +72,10 @@
+ #include <schily/find.h>
+ #endif
+ 
++#ifdef __MINGW32__
++#define mkdir(a,b) mkdir(a)
++#endif
++
+ /*
+  * Make sure we have a definition for this.  If not, take a very conservative
+  * guess.
+@@ -866,13 +870,13 @@
+ 				errmsg("Cannot make directory '%s'.\n", fname);
+ 			goto setmode;
+ 
+-#ifdef	S_IFBLK
++#if defined	(S_IFBLK) && !defined (__MINGW32__)
+ 	case S_IFBLK:
+ 			if (mknod(fname, fstat_buf.st_mode, fstat_buf.st_rdev) < 0)
+ 				errmsg("Cannot make block device '%s'.\n", fname);
+ 			goto setmode;
+ #endif
+-#ifdef	S_IFCHR
++#if defined	(S_IFCHR) && !defined (__MINGW32__)
+ 	case S_IFCHR:
+ 			if (mknod(fname, fstat_buf.st_mode, fstat_buf.st_rdev) < 0)
+ 				errmsg("Cannot make character device '%s'.\n", fname);
+--- RULES/os-mingw32_nt-6.0.id	Sat Nov 23 15:21:46 2013
++++ RULES/os-mingw32_nt-6.0.id	Tue Mar 07 07:39:36 2014
+@@ -0,0 +1,21 @@
++ #ident "@(#)os-mingw32_nt-5.2.id	1.2 06/05/14 "
++ ###########################################################################
++ #
++ # OS specific MACRO definitions for Win32/Mingw32
++ #
++ ###########################################################################
++ # Copyright (c) J. Schilling
++ ###########################################################################
++ # The contents of this file are subject to the terms of the
++ # Common Development and Distribution License, Version 1.0 only.
++ # (the "License").  You may not use this file except in compliance
++ # with the License.
++ #
++ # See the file CDDL.Schily.txt in this distribution for details.
++ #
++ # When distributing Covered Code, include this CDDL HEADER in each
++ # file and include the License file CDDL.Schily.txt from this distribution.
++ ###########################################################################
++ O_ARCH=		mingw32_nt
++ -O_ARCH=	-$(O_ARCH)
++ 
+--- RULES/os-mingw32_nt-6.1.id	Sat Nov 23 15:21:46 2013
++++ RULES/os-mingw32_nt-6.1.id	Tue Mar 07 07:39:36 2014
+@@ -0,0 +1,21 @@
++ #ident "@(#)os-mingw32_nt-5.2.id	1.2 06/05/14 "
++ ###########################################################################
++ #
++ # OS specific MACRO definitions for Win32/Mingw32
++ #
++ ###########################################################################
++ # Copyright (c) J. Schilling
++ ###########################################################################
++ # The contents of this file are subject to the terms of the
++ # Common Development and Distribution License, Version 1.0 only.
++ # (the "License").  You may not use this file except in compliance
++ # with the License.
++ #
++ # See the file CDDL.Schily.txt in this distribution for details.
++ #
++ # When distributing Covered Code, include this CDDL HEADER in each
++ # file and include the License file CDDL.Schily.txt from this distribution.
++ ###########################################################################
++ O_ARCH=		mingw32_nt
++ -O_ARCH=	-$(O_ARCH)
++ 
+--- RULES/os-mingw32_nt-6.2.id	Sat Nov 23 15:21:46 2013
++++ RULES/os-mingw32_nt-6.2.id	Tue Mar 07 07:39:36 2014
+@@ -0,0 +1,21 @@
++ #ident "@(#)os-mingw32_nt-5.2.id	1.2 06/05/14 "
++ ###########################################################################
++ #
++ # OS specific MACRO definitions for Win32/Mingw32
++ #
++ ###########################################################################
++ # Copyright (c) J. Schilling
++ ###########################################################################
++ # The contents of this file are subject to the terms of the
++ # Common Development and Distribution License, Version 1.0 only.
++ # (the "License").  You may not use this file except in compliance
++ # with the License.
++ #
++ # See the file CDDL.Schily.txt in this distribution for details.
++ #
++ # When distributing Covered Code, include this CDDL HEADER in each
++ # file and include the License file CDDL.Schily.txt from this distribution.
++ ###########################################################################
++ O_ARCH=		mingw32_nt
++ -O_ARCH=	-$(O_ARCH)
++ 

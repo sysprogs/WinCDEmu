@@ -30,11 +30,11 @@
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\..\..\sysprogs\bzslib\BazisLibIncludes.props" />
+    <Import Project="..\..\BazisLib\BazisLibIncludes.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\..\..\sysprogs\bzslib\BazisLibIncludes.props" />
+    <Import Project="..\..\BazisLib\BazisLibIncludes.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
@@ -122,19 +122,17 @@
     <ResourceCompile Include="InstallerStub.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\sysprogs\bzslib\bzscore\bzscore.vcxproj">
+    <ProjectReference Include="..\..\..\svn\imported\LZMA\CPP\7zip\Compress\LZMA_Lib\LZMALib.vcxproj">
+      <Project>{ddf6308f-9609-4425-b4b0-1daa32ad09be}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\svn\win32\installer\SSIBASE\ssibase.vcxproj">
+      <Project>{80503033-ff81-493e-993f-afddf6948df1}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\BazisLib\bzscore\bzscore.vcxproj">
       <Project>{a009693f-aadd-42cf-8e6e-f7bbf5601e5c}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\sysprogs\bzslib\bzshlp\bzshlp.vcxproj">
+    <ProjectReference Include="..\..\BazisLib\bzshlp\bzshlp.vcxproj">
       <Project>{443b5c7d-6675-4a16-a297-e8653eee39ad}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\imported\LZMA\CPP\7zip\Compress\LZMA_Lib\LZMALib.vcxproj">
-      <Project>{ddf6308f-9609-4425-b4b0-1daa32ad09be}</Project>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\win32\installer\SSIBASE\ssibase.vcxproj">
-      <Project>{80503033-ff81-493e-993f-afddf6948df1}</Project>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -3,7 +3,8 @@
 #include <bzscore/buffer.h>
 #include "CDSpeed.h"
 #include <ntddscsi.h>
-#include <ntddcdrm.h>
+
+#define IOCTL_CDROM_BASE                 FILE_DEVICE_CD_ROM
 
 using namespace BazisLib;
 

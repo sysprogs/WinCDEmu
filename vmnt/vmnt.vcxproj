@@ -1,5 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" InitialTargets="CheckEnvironment">
+  <PropertyGroup Condition="'$(SIGN_RELEASE_BINARY)' == ''">
+	<SIGN_RELEASE_BINARY>cmd /c echo SIGN_RELEASE_BINARY not defined. Skipping signing of </SIGN_RELEASE_BINARY>
+  </PropertyGroup>
+  <Target Name="CheckEnvironment">
+      <Error Condition="(!exists('$(WTL_PATH)\Include'))" Text="The WTL_PATH environment variable is missing or does not point at the WTL 8.0 directory. You get get WTL at http://wtl.sourceforge.net/"/>
+  </Target>
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -58,26 +64,26 @@
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\..\..\sysprogs\bzslib\BazisLibIncludes.props" />
+    <Import Project="..\..\BazisLib\BazisLibIncludes.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\..\..\sysprogs\bzslib\BazisLibIncludes.props" />
+    <Import Project="..\..\BazisLib\BazisLibIncludes.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Template|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\..\..\sysprogs\bzslib\BazisLibIncludes.props" />
+    <Import Project="..\..\BazisLib\BazisLibIncludes.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\..\..\sysprogs\bzslib\BazisLibIncludes.props" />
+    <Import Project="..\..\BazisLib\BazisLibIncludes.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\..\..\sysprogs\bzslib\BazisLibIncludes.props" />
+    <Import Project="..\..\BazisLib\BazisLibIncludes.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Template|Win32'">
-    <Import Project="..\..\..\..\sysprogs\bzslib\BazisLibIncludes.props" />
+    <Import Project="..\..\BazisLib\BazisLibIncludes.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
@@ -124,7 +130,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <AdditionalIncludeDirectories>$(BZSLIB_PATH)\;$(SolutionDir)WTL</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(BZSLIB_PATH)\;$(WTL_PATH)\Include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <UACExecutionLevel>AsInvoker</UACExecutionLevel>
@@ -152,7 +158,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>$(BZSLIB_PATH)\;$(SolutionDir)WTL</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(BZSLIB_PATH)\;$(WTL_PATH)\Include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <UACExecutionLevel>AsInvoker</UACExecutionLevel>
@@ -175,7 +181,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>$(BZSLIB_PATH)\;$(SolutionDir)WTL</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(BZSLIB_PATH)\;$(WTL_PATH)\Include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <UACExecutionLevel>AsInvoker</UACExecutionLevel>
@@ -189,7 +195,7 @@
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <PreBuildEvent>
-      <Command>$(BZSLIB_PATH)\bin\strgen.exe</Command>
+      <Command>$(BZSLIB_PATH)\strgen.exe</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>$(SIGN_RELEASE_BINARY) $(TargetPath)</Command>
@@ -198,7 +204,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <PreBuildEvent>
       <Command>
-$(BZSLIB_PATH)\bin\strgen.exe</Command>
+$(BZSLIB_PATH)\strgen.exe</Command>
     </PreBuildEvent>
     <Midl>
       <TargetEnvironment>X64</TargetEnvironment>
@@ -210,7 +216,7 @@ $(BZSLIB_PATH)\bin\strgen.exe</Command>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>$(BZSLIB_PATH)\;$(SolutionDir)WTL</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(BZSLIB_PATH)\;$(WTL_PATH)\Include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <UACExecutionLevel>AsInvoker</UACExecutionLevel>
@@ -229,7 +235,7 @@ $(BZSLIB_PATH)\bin\strgen.exe</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Template|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(BZSLIB_PATH)\;$(SolutionDir)WTL</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(BZSLIB_PATH)\;$(WTL_PATH)\Include</AdditionalIncludeDirectories>
     </ClCompile>
     <PostBuildEvent>
       <Command>$(SIGN_RELEASE_BINARY) $(TargetPath)</Command>
@@ -237,7 +243,7 @@ $(BZSLIB_PATH)\bin\strgen.exe</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Template|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(BZSLIB_PATH)\;$(SolutionDir)WTL</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(BZSLIB_PATH)\;$(WTL_PATH)\Include</AdditionalIncludeDirectories>
     </ClCompile>
     <PostBuildEvent>
       <Command>$(SIGN_RELEASE_BINARY) $(TargetPath)</Command>
@@ -279,10 +285,10 @@ $(BZSLIB_PATH)\bin\strgen.exe</Command>
     <ResourceCompile Include="vmnt.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\sysprogs\bzslib\bzscore\bzscore.vcxproj">
+    <ProjectReference Include="..\..\BazisLib\bzscore\bzscore.vcxproj">
       <Project>{a009693f-aadd-42cf-8e6e-f7bbf5601e5c}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\sysprogs\bzslib\bzshlp\bzshlp.vcxproj">
+    <ProjectReference Include="..\..\BazisLib\bzshlp\bzshlp.vcxproj">
       <Project>{443b5c7d-6675-4a16-a297-e8653eee39ad}</Project>
     </ProjectReference>
     <ProjectReference Include="..\ImageFormats\ImageFormats.vcxproj">

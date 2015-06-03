@@ -26,3 +26,35 @@
 *.exe
 *.out
 *.app
+*.pdb
+*.exp
+Debug
+Release
+x64
+Debug (user-mode)
+Release (user-mode)
+DebugPS
+ReleasePS
+_distr/app
+_distr/drivers
+ipch
+*.sdf
+*.suo
+/VirtualAutorunDisabler/VirtualAutorunDisabler_i.c
+/VirtualAutorunDisabler/VirtualAutorunDisabler_i.h
+/VirtualAutorunDisabler/VirtualAutorunDisabler_p32.c
+/VirtualAutorunDisabler/VirtualAutorunDisabler_p64.c
+/WinCDEmuContextMenu/WinCDEmuContextMenu_i.c
+/WinCDEmuContextMenu/WinCDEmuContextMenu_i.h
+/WinCDEmuContextMenu/WinCDEmuContextMenu_p32.c
+/WinCDEmuContextMenu/WinCDEmuContextMenu_p64.c
+/AllModules
+/_distr/_drvinst.bzz
+/_distr/_drvinst.bzz.stat
+/_distr/drivers.bzz
+/_distr/drivers.bzz.stat
+/_distr/main.bzz
+/_distr/main.bzz.stat
+/vmnt/vmnt.lng
+/vmnt/vmnt_lng.cpp
+/vmnt/vmnt_lng.h

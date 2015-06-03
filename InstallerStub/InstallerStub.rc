@@ -183,4 +183,4 @@ END
 /////////////////////////////////////////////////////////////////////////////
 #endif    // not APSTUDIO_INVOKED
 
-#include "../../../win32/installer/ssibase/ssibase.rc"
+#include "../../../svn/win32/installer/ssibase/ssibase.rc"

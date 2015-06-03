@@ -22,6 +22,9 @@
     <ProjectGuid>{4640A310-51DE-4164-92ED-1087BB73F109}</ProjectGuid>
     <RootNamespace>BazisVirtualCDBus</RootNamespace>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(SIGN_RELEASE_BINARY)' == ''">
+	<SIGN_RELEASE_BINARY>cmd /c echo SIGN_RELEASE_BINARY not defined. Skipping signing of </SIGN_RELEASE_BINARY>
+  </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -116,6 +119,7 @@
       </RandomizedBaseAddress>
       <DataExecutionPrevention>
       </DataExecutionPrevention>
+      <AdditionalOptions>/IGNORE:4210 %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <PostBuildEvent>
       <Command>$(SIGN_RELEASE_BINARY) $(TargetPath)</Command>
@@ -150,6 +154,7 @@
       </RandomizedBaseAddress>
       <DataExecutionPrevention>
       </DataExecutionPrevention>
+      <AdditionalOptions>/IGNORE:4210 %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <PostBuildEvent>
       <Command>$(SIGN_RELEASE_BINARY) $(TargetPath)</Command>
@@ -190,6 +195,7 @@
       </RandomizedBaseAddress>
       <DataExecutionPrevention>
       </DataExecutionPrevention>
+      <AdditionalOptions>/IGNORE:4210 %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <PostBuildEvent>
       <Command>call $(SIGN_RELEASE_BINARY) $(TargetPath)
@@ -231,6 +237,7 @@ copy /y $(ProjectDir)BazisVirtualCDBus.inf $(TargetDir)\..</Command>
       </RandomizedBaseAddress>
       <DataExecutionPrevention>
       </DataExecutionPrevention>
+      <AdditionalOptions>/IGNORE:4210 %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <PostBuildEvent>
       <Command>call $(SIGN_RELEASE_BINARY) $(TargetPath)
@@ -260,7 +267,7 @@ copy /y $(ProjectDir)BazisVirtualCDBus.inf $(TargetDir)\..</Command>
     <ResourceCompile Include="BazisVirtualCDBus.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\sysprogs\bzslib\bzscore\bzscore.vcxproj">
+    <ProjectReference Include="..\..\BazisLib\bzscore\bzscore.vcxproj">
       <Project>{a009693f-aadd-42cf-8e6e-f7bbf5601e5c}</Project>
       <Private>true</Private>
       <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
@@ -268,7 +275,7 @@ copy /y $(ProjectDir)BazisVirtualCDBus.inf $(TargetDir)\..</Command>
       <LinkLibraryDependencies>true</LinkLibraryDependencies>
       <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\sysprogs\bzslib\bzshlp\bzshlp.vcxproj">
+    <ProjectReference Include="..\..\BazisLib\bzshlp\bzshlp.vcxproj">
       <Project>{443b5c7d-6675-4a16-a297-e8653eee39ad}</Project>
       <Private>true</Private>
       <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
