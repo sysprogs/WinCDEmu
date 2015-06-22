@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" InitialTargets="CheckEnvironment">
   <PropertyGroup Condition="'$(SIGN_RELEASE_BINARY)' == ''">
-	<SIGN_RELEASE_BINARY>cmd /c echo SIGN_RELEASE_BINARY not defined. Skipping signing of </SIGN_RELEASE_BINARY>
+	<SIGN_RELEASE_BINARY>$(ProjectDir)..\dummysign.bat</SIGN_RELEASE_BINARY>
   </PropertyGroup>
   <Target Name="CheckEnvironment">
       <Error Condition="(!exists('$(WTL_PATH)\Include'))" Text="The WTL_PATH environment variable is missing or does not point at the WTL 8.0 directory. You get get WTL at http://wtl.sourceforge.net/"/>

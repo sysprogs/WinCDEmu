@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Condition="'$(SIGN_RELEASE_BINARY)' == ''">
-	<SIGN_RELEASE_BINARY>cmd /c echo SIGN_RELEASE_BINARY not defined. Skipping signing of </SIGN_RELEASE_BINARY>
+	<SIGN_RELEASE_BINARY>$(ProjectDir)..\dummysign.bat</SIGN_RELEASE_BINARY>
   </PropertyGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{AE4C0767-F387-48DD-970E-1D143053516A}</ProjectGuid>
