@@ -33,9 +33,9 @@ cipher /d /a /s:.
 call ..\..\..\svn\utils\mkcat.bat drivers
 call ..\..\..\svn\utils\sign_r.bat drivers\BazisVirtualCDBus.cat
 
-call ..\..\..\svn\utils\ssibuilder VirtualCD.xit WinCDEmu-4.0.exe /linkcabs /nopause /exestub:..\AllModules\InstallerStub.exe
+call ..\..\..\svn\utils\ssibuilder VirtualCD.xit WinCDEmu-4.1.exe /linkcabs /nopause /exestub:..\AllModules\InstallerStub.exe
 cipher /d /a *.exe
-call ..\..\..\svn\utils\sign_r.bat WinCDEmu-4.0.exe
+call ..\..\..\svn\utils\sign_r.bat WinCDEmu-4.1.exe
 goto end
 :error
 echo Build failed!
