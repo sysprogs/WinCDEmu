@@ -12,11 +12,13 @@
 // CDriveContextMenu
 
 #include <bzscore/file.h>
+#include "DebugLog.h"
 using namespace BazisLib;
-
 
 HRESULT STDMETHODCALLTYPE CDriveContextMenu::Initialize(/* [unique][in] */ __in_opt PCIDLIST_ABSOLUTE pidlFolder, /* [unique][in] */ __in_opt IDataObject *pdtobj, /* [unique][in] */ __in_opt HKEY hkeyProgID)
 {
+	WINCDEMU_LOG_LINE(L"CDriveContextMenu::Initialize()");
+
 	HRESULT hR = ContextMenuBase::Initialize(pidlFolder, pdtobj, hkeyProgID);
 	if (!SUCCEEDED(hR))
 		return hR;
@@ -36,6 +38,7 @@ HRESULT STDMETHODCALLTYPE CDriveContextMenu::Initialize(/* [unique][in] */ __in_
 		}
 	}
 
+	WINCDEMU_LOG_LINE(L"CDriveContextMenu::Initialize(): isDrive = %d, isWinCDEmu = %d", m_bIsOpticalDrive, m_bIsWinCDEmuDrive);
 	return S_OK;
 }
 
@@ -45,10 +48,14 @@ extern HINSTANCE g_hModule;
 
 HRESULT STDMETHODCALLTYPE CDriveContextMenu::QueryContextMenu(/* [in] */ __in HMENU hmenu, /* [in] */ __in UINT indexMenu, /* [in] */ __in UINT idCmdFirst, /* [in] */ __in UINT idCmdLast, /* [in] */ __in UINT uFlags)
 {
+	WINCDEMU_LOG_LINE(L"CDriveContextMenu::QueryContextMenu()");
+
 	if (uFlags & CMF_DEFAULTONLY)
 		return MAKE_HRESULT(SEVERITY_SUCCESS, 0, USHORT(0));
 
 	unsigned lastID = IDM_CREATEISO;
+	WINCDEMU_LOG_LINE(L"CDriveContextMenu: inserting menu items...");
+
 	if (m_bIsOpticalDrive)
 	{
 		InsertMenu(hmenu, indexMenu, MF_STRING | MF_BYPOSITION, idCmdFirst + IDM_CREATEISO, txtCreateISO());
@@ -66,6 +73,7 @@ HRESULT STDMETHODCALLTYPE CDriveContextMenu::QueryContextMenu(/* [in] */ __in HM
 		lastID = IDM_BUILDISO;
 	}
 
+	WINCDEMU_LOG_LINE(L"CDriveContextMenu: loading icon...");
 	HICON hIcon = (HICON) LoadImage(g_hModule, MAKEINTRESOURCE(IDI_MAINICON), IMAGE_ICON, 16, 16, LR_SHARED);
 	if (hIcon)
 	{
@@ -77,11 +85,14 @@ HRESULT STDMETHODCALLTYPE CDriveContextMenu::QueryContextMenu(/* [in] */ __in HM
 		}
 	}
 
+	WINCDEMU_LOG_LINE(L"CDriveContextMenu::QueryContextMenu() returning...");
 	return MAKE_HRESULT(SEVERITY_SUCCESS, 0, USHORT(lastID + 1));
 }
 
 HRESULT STDMETHODCALLTYPE CDriveContextMenu::InvokeCommand(/* [in] */ __in CMINVOKECOMMANDINFO *pici)
 {
+	WINCDEMU_LOG_LINE(L"CDriveContextMenu::InvokeCommand()");
+
 	if (!pici)
 		return E_NOTIMPL;
 

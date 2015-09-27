@@ -10,6 +10,8 @@
 // Used to determine whether the DLL can be unloaded by OLE
 STDAPI DllCanUnloadNow(void)
 {
+	return S_FALSE;		//We've seen some Explorer crash reports caused by exceptions in unloaded context menu DLL. Not 100% sure about the cause, but preventing the unload completely should prevent those.
+
 #ifdef _MERGE_PROXYSTUB
     HRESULT hr = PrxDllCanUnloadNow();
     if (hr != S_OK)
