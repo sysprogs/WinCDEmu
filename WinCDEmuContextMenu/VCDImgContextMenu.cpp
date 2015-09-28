@@ -136,6 +136,8 @@ HRESULT STDMETHODCALLTYPE CVCDImgContextMenu::InvokeCommand(/* [in] */ __in CMIN
 				HINSTANCE result = ShellExecute(pici->hwnd, _T("open"), path.c_str(), String::sFormat(L"\"%s\" /remount:%c", m_FileName.c_str(), (char)letter).c_str(), NULL, pici->nShow);
 				WINCDEMU_LOG_LINE(L"ShellExecute() done: %d", result);
 			}
+			else
+				return E_FAIL;
 		}
 	}
 		

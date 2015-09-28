@@ -112,6 +112,8 @@ HRESULT STDMETHODCALLTYPE CDriveContextMenu::InvokeCommand(/* [in] */ __in CMINV
 	case IDM_BUILDISO:
 		ShellExecute(pici->hwnd, _T("open"), path.c_str(), String::sFormat(L"/isofromfolder \"%s\"", m_FileName.c_str()).c_str(), NULL, pici->nShow);
 		break;
+	default:
+		return E_FAIL;
 	}
 
 	return S_OK;

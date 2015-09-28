@@ -316,6 +316,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ContextMenuBase.h" />
+    <ClInclude Include="DebugLog.h" />
     <ClInclude Include="dlldatax.h" />
     <ClInclude Include="dllmain.h" />
     <ClInclude Include="DriveContextMenu.h" />
