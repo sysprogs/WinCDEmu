@@ -8,6 +8,7 @@
 // Generated from the TEXTINCLUDE 2 resource.
 //
 #include "afxres.h"
+#include "../wcdversion.h"
 
 /////////////////////////////////////////////////////////////////////////////
 #undef APSTUDIO_READONLY_SYMBOLS
@@ -286,15 +287,15 @@ BEGIN
     BEGIN
         BLOCK "000004b0"
         BEGIN
-            VALUE "Comments", "http://wincdemu.sysprogs.org/"
-            VALUE "CompanyName", "Sysprogs OU"
+            VALUE "Comments", COMMENTS_STR
+            VALUE "CompanyName", COMPANY_STR
             VALUE "FileDescription", "WinCDEmu mounter"
-            VALUE "FileVersion", "4.0"
-            VALUE "LegalCopyright", "LGPL"
-            VALUE "LegalTrademarks", "Sysprogs"
+            VALUE "FileVersion", WINCDEMU_VERSION_STR
+            VALUE "LegalCopyright", COPYRIGHT_STR
+            VALUE "LegalTrademarks", TRADEMARKS_STR
             VALUE "OriginalFilename", "vmnt.exe"
-            VALUE "ProductName", "WinCDEmu"
-            VALUE "ProductVersion", "4.0"
+            VALUE "ProductName", PRODUCTNAME_STR
+            VALUE "ProductVersion", WINCDEMU_VERSION_STR
         END
     END
     BLOCK "VarFileInfo"
