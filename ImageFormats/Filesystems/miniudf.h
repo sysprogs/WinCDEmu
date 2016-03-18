@@ -174,7 +174,7 @@ private:
 		static SectorIndex TransformKey(SectorIndex idx)
 		{
 			//To efficiently support highly fragmented partitions, this function should perform a one-to-one non-monotonic transformation of idx.
-			//I.e. when we are adding increasing indicies (e.g. 0, 100, 200, 500), the transformation result should not monotonically grow (e.g. 1,2,7,123)
+			//I.e. when we are adding increasing indices (e.g. 0, 100, 200, 500), the transformation result should not monotonically grow (e.g. 1,2,7,123)
 			//or drop (e.g. 123,100,20,3). Instead, the result should change pseudorandomly (e.g. 100, 2, 500, 144). This will ensure maximum performance
 			//with the trees used by m_Extents
 			return idx;
