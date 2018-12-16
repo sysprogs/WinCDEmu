@@ -127,6 +127,7 @@ void DeleteFiles(BazisLib::String path)
 	Directory::Remove(path);
 	MoveFileEx(tsz, NULL, MOVEFILE_DELAY_UNTIL_REBOOT);
 	p[0] = '\\';
+	MoveFileEx(tsz, NULL, MOVEFILE_DELAY_UNTIL_REBOOT);
 
 	MoveFileEx(Path::Combine(path, _T("x86\\WinCDEmuContextMenu.dll")).c_str(), NULL, MOVEFILE_DELAY_UNTIL_REBOOT);
 	MoveFileEx(Path::Combine(path, _T("x64\\WinCDEmuContextMenu.dll")).c_str(), NULL, MOVEFILE_DELAY_UNTIL_REBOOT);
