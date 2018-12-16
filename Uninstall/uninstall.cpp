@@ -41,7 +41,11 @@ void RemoveRegistryKeys()
 	RegistryKey key(HKEY_CLASSES_ROOT, _T("Applications"));
 	key.DeleteSubKeyRecursive(_T("vmnt.exe"));
 	key.DeleteSubKeyRecursive(_T("vmnt64.exe"));
+#ifdef _WIN64
+	RegistryKey key3(HKEY_LOCAL_MACHINE, _T("SOFTWARE\\WOW6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall"));
+#else
 	RegistryKey key3(HKEY_LOCAL_MACHINE, _T("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall"));
+#endif
 	key3.DeleteSubKeyRecursive(_T("WinCDEmu"));
 }
 
@@ -119,9 +123,16 @@ void DeleteFiles(BazisLib::String path)
 	File::Delete(Path::Combine(path, _T("BazisVirtualCDBus.cat")));
 	File::Delete(Path::Combine(path, _T("uninstall.exe")));
 	File::Delete(Path::Combine(path, _T("uninstall64.exe")));
+	File::Delete(Path::Combine(path, _T("mkisofs.exe")));
 	Directory::Remove(path);
-	p[0] = '\\';
 	MoveFileEx(tsz, NULL, MOVEFILE_DELAY_UNTIL_REBOOT);
+	p[0] = '\\';
+
+	MoveFileEx(Path::Combine(path, _T("x86\\WinCDEmuContextMenu.dll")).c_str(), NULL, MOVEFILE_DELAY_UNTIL_REBOOT);
+	MoveFileEx(Path::Combine(path, _T("x64\\WinCDEmuContextMenu.dll")).c_str(), NULL, MOVEFILE_DELAY_UNTIL_REBOOT);
+	
+	if (!RemoveDirectory(path.c_str()))
+		MoveFileEx(path.c_str(), NULL, MOVEFILE_DELAY_UNTIL_REBOOT);
 }
 
 #pragma comment(lib, "ntdll")
@@ -284,6 +295,6 @@ int WINAPI CALLBACK WinMain (
 #endif
 
 	DeleteFiles(pszProgramDir);
-	MessageBox(0, _T("WinCDEmu was successfully uninstalled."), _T("Information"), MB_ICONINFORMATION);
+	MessageBox(0, _T("WinCDEmu was successfully uninstalled.\r\nFiles that are currently in use will be deleted next time you restart Windows."), _T("Information"), MB_ICONINFORMATION);
 	return 0;
 }
